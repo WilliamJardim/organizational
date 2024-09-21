@@ -6,7 +6,7 @@ import EditorColaborador from './EditorColaborador';
 
 const DisplayColaborador = (props) => {
     const [colaborador, setColaborador] = useState( props.colaborador );
-    const idColaborador = colaborador.id;
+    const idColaborador = colaborador.id || null;
     const {colaboradores, setColaboradores, times, setores} = props;
     const {onMensagem, onFecharColaborador} = props;
 
