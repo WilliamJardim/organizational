@@ -1,0 +1,34 @@
+.botao {
+    background-color: #6278f7;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 32px;
+    cursor: pointer;
+    color: #FFF;
+    margin: 32px 0;
+    border: solid 2px black;
+    font-weight: bold;
+    box-shadow: 10px 10px 10px black;
+    text-decoration:none;
+}
+
+.botao:hover {
+    color: #95FFD4;
+}
+
+.botao-neutro{
+    background-color: rgb(31, 31, 31);
+}
+
+.botao-cancelar{
+    background-color: darkred;
+}
+
+.botao-perigo{
+    background-color: darkred;
+}
+
+.botao-gravar{
+    background-color: darkgreen;
+}

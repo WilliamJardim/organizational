@@ -1,0 +1,21 @@
+.campo-area-texto{
+    margin: 24px 0;
+}
+
+.campo-area-texto label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.campo-area-texto textarea {
+    background-color: #FFF;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    font-size: 24px;
+    padding: 24px;
+    box-sizing: border-box;
+    border: 0.2px black;
+    border-radius: 10px;
+    max-height: 400px;
+}

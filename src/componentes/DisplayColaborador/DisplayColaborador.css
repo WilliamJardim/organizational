@@ -1,0 +1,32 @@
+.display-colaborador{
+    padding: 36px 64px;
+}
+
+.display-colaborador .display-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 80px 0;
+    max-width: 80%;
+    border-radius: 20px;
+    padding: 36px 64px;
+}
+
+.display-colaborador .cabecalho-colaborador{
+    padding: 20px;
+}
+
+.display-colaborador .texto-apresentacao{
+    padding: 20px;
+}
+
+.display-colaborador .container-horizontal{
+    display: flex;
+    flex-direction: row;
+}
+
+.display-colaborador textarea{
+    width: 400px;
+    height: 200px;
+    box-shadow: 8px 8px 16px rgba(0,0,0, 0.08);
+}
