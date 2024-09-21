@@ -5,7 +5,7 @@ import Botao from '../Botao';
 import EditorColaborador from './EditorColaborador';
 
 const DisplayColaborador = (props) => {
-    const colaborador = props.colaborador;
+    const [colaborador, setColaborador] = useState( props.colaborador );
     const idColaborador = colaborador.id;
     const {colaboradores, setColaboradores, times, setores} = props;
     const {onMensagem, onFecharColaborador} = props;
@@ -31,10 +31,10 @@ const DisplayColaborador = (props) => {
             return col;
         });
 
-        debugger;
-
+        setColaborador( colaboradorEditado );
         setColaboradores( novoColaboradores );
-
+        onPararEditar();
+        
     }
 
     const onFecharDisplay = function(){

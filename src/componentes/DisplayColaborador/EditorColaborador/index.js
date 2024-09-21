@@ -7,7 +7,7 @@ const EditorColaborador = (props) => {
     const {onGravarColaborador, onCancelar} = props;
 
     return (
-    
+
         <div className='editor-colaborador'>
             
             <Formulario nomeForm='Editor'

@@ -45,6 +45,7 @@ const Time = (props) => {
                                                                           nome={colaborador.nome} 
                                                                           idade={colaborador.idade}
                                                                           descricao={colaborador.descricao}
+                                                                          time={colaborador.time}
                                                                           setor={colaborador.setor}
                                                                           cargo={colaborador.cargo} 
                                                                           imagem={colaborador.imagem}                                                          
