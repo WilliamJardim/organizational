@@ -3,7 +3,8 @@ import './Colaborador.css'
 const Colaborador = (props) => {
     const dados = props;
 
-    const { nome, 
+    const { id,
+            nome, 
             idade, 
             descricao,
             imagem, 

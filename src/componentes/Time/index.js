@@ -6,6 +6,7 @@ import './Time.css'
 const Time = (props) => {
     const css = { backgroundColor: props.corSecundaria }
     const {times, setores} = props;
+    const {colaboradores, setColaboradores} = props;
     const [visualizandocolaborador, setVisualizandocolaborador]  = useState(false);
     const [objetocolaborador,       setObjetoColaborador]        = useState(false);
 
@@ -20,14 +21,16 @@ const Time = (props) => {
     }
 
     return (
-        (props.colaboradores.length > 0) ? 
+        (colaboradores.length > 0) ? 
 
             <section className='time' style={css}>
                 <h3 style={{ borderColor: props.corPrimaria }}>{props.nome}</h3>
 
                 {
                     //Se o display do colaborador estiver aberto
-                    visualizandocolaborador ? <DisplayColaborador colaborador={objetocolaborador}
+                    visualizandocolaborador ? <DisplayColaborador colaboradores={colaboradores}
+                                                                  setColaboradores={setColaboradores}
+                                                                  colaborador={objetocolaborador}
                                                                   onFecharColaborador={onFecharColaborador}
                                                                   times={times}
                                                                   setores={setores}
@@ -36,7 +39,8 @@ const Time = (props) => {
 
                 <div className='colaboradores'>
 
-                    {props.colaboradores.map( colaborador => <Colaborador corDeFundo={props.corPrimaria} 
+                    {props.colaboradores.map( colaborador => <Colaborador id={colaborador.id}
+                                                                          corDeFundo={props.corPrimaria} 
                                                                           key={colaborador.nome} 
                                                                           nome={colaborador.nome} 
                                                                           idade={colaborador.idade}

@@ -63,6 +63,7 @@ function App() {
 
   const [colaboradores,           setColaboradores]            = useState([
     {
+      id: new Date().getTime(),
       nome: 'William',
       descricao: 'Um programador',
       cargo: 'Programador',
@@ -123,6 +124,7 @@ function App() {
         corPrimaria={time.corPrimaria} 
         corSecundaria={time.corSecundaria} 
         colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+        setColaboradores={setColaboradores}
       />)}   
 
     </div>

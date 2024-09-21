@@ -31,7 +31,11 @@ const Formulario = (props) => {
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
+
+        let id = new Date().getTime();
+
         props.aoColaboradorCadastrado({
+            id,
             nome,
             idade,
             cargo,

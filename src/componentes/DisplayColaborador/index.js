@@ -6,7 +6,8 @@ import EditorColaborador from './EditorColaborador';
 
 const DisplayColaborador = (props) => {
     const colaborador = props.colaborador;
-    const {times, setores} = props;
+    const idColaborador = colaborador.id;
+    const {colaboradores, setColaboradores, times, setores} = props;
     const {onMensagem, onFecharColaborador} = props;
 
     const [editando,  setEditando] = useState(false);
@@ -19,7 +20,20 @@ const DisplayColaborador = (props) => {
         setEditando(false);
     }
 
-    const onGravarColaborador = function(){
+    const onGravarColaborador = function( colaboradorEditado ){
+
+        //Grava no objeto
+        let novoColaboradores = [... colaboradores].map(function(col){
+            if(col.id == idColaborador){
+                return colaboradorEditado; //O colaborador editado
+            }
+
+            return col;
+        });
+
+        debugger;
+
+        setColaboradores( novoColaboradores );
 
     }
 
@@ -80,10 +94,10 @@ const DisplayColaborador = (props) => {
                     editando ? 
 
                         <EditorColaborador colaborador = {colaborador}
-                                        onCancelar  = {onPararEditar}
-                                        onGravarColaborador = {onGravarColaborador}
-                                        times={times}
-                                        setores={setores}
+                                           onCancelar  = {onPararEditar}
+                                           onGravarColaborador = {onGravarColaborador}
+                                           times={times}
+                                           setores={setores}
                         />
 
                     : ''

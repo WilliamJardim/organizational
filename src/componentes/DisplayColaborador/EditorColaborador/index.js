@@ -11,6 +11,7 @@ const EditorColaborador = (props) => {
         <div className='editor-colaborador'>
             
             <Formulario nomeForm='Editor'
+                        titulo='Editar Colaborador'
                         times={times} 
                         setores={setores} 
                         aoColaboradorCadastrado={onGravarColaborador}
