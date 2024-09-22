@@ -17,9 +17,9 @@ export const AlertaConfirmacao = (props) => {
                    ✔️ Sim
                </Botao>
 
-                <Botao tipo="neutro" onClick={ (evento) => onRecusar(evento) }>
+               <Botao tipo="neutro" onClick={ (evento) => onRecusar(evento) }>
                    ❌ Não
-                </Botao>
+               </Botao>
 
            </div>
 

@@ -4,6 +4,7 @@ import ContainerHorizontal from '../ContainerHorizontal';
 import Botao from '../Botao';
 import EditorColaborador from './EditorColaborador';
 import AlertaConfirmacao from '../AlertaConfirmacao';
+import MensagemColaborador from './MensagemColaborador';
 
 const DisplayColaborador = (props) => {
     const [colaborador, setColaborador] = useState( props.colaborador );
@@ -13,6 +14,7 @@ const DisplayColaborador = (props) => {
 
     const [editando,           setEditando]          = useState(false);
     const [confirmandoApagar,  setConfirmandoApagar] = useState(false);
+    const [escrevendoEmail,    setEscrevendoEmail]   = useState(false);
 
     const onConfirmarDeletarTudo = function(){
         setConfirmandoApagar(false);
@@ -24,6 +26,18 @@ const DisplayColaborador = (props) => {
 
     const abrirConfirmacaoDeletarTudo = function(){
         setConfirmandoApagar(true);
+    }
+
+    const abrirTelaMensagem = function(){
+        setEscrevendoEmail(true);
+    }
+
+    const fecharTelaMensagem = function(){
+        setEscrevendoEmail(false);
+    }
+
+    const onMensagemClick = function(){
+        fecharTelaMensagem();
     }
 
     const onEditar = function(){
@@ -63,19 +77,26 @@ const DisplayColaborador = (props) => {
             <div className='display-flex'>
 
                 {
-                    !confirmandoApagar &&
+                    escrevendoEmail && <MensagemColaborador nome={colaborador.nome}
+                                                            onEnviar={onMensagemClick}
+                                                            onFechar={fecharTelaMensagem}/>
+                }
+
+                {
+                    (!escrevendoEmail &&
+                     !confirmandoApagar) &&
                     <div className='cabecalho-colaborador'>
                         <h1> { colaborador.nome } </h1>
                         <img src={colaborador.imagem} alt={colaborador.nome}/>
 
                         <ContainerHorizontal>
 
-                            <Botao tipo="neutro" onClick={onMensagem}>
-                            💬 Mensagem
+                            <Botao tipo="neutro" onClick={abrirTelaMensagem}>
+                               💬 Mensagem
                             </Botao>
 
                             <Botao tipo="neutro" onClick={onMensagem}>
-                            📞 Ligação
+                               📞 Ligação
                             </Botao>
 
                         </ContainerHorizontal>
@@ -84,7 +105,9 @@ const DisplayColaborador = (props) => {
                 }
 
                 {
-                !confirmandoApagar &&
+                    (!escrevendoEmail &&
+                      !confirmandoApagar)
+                    &&
                     <div className='texto-apresentacao'>
                         <h2> Sobre: </h2>
                         <textarea value={colaborador.descricao}></textarea>
