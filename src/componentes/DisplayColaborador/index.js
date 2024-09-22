@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ContainerHorizontal from '../ContainerHorizontal';
 import Botao from '../Botao';
 import EditorColaborador from './EditorColaborador';
+import AlertaConfirmacao from '../AlertaConfirmacao';
 
 const DisplayColaborador = (props) => {
     const [colaborador, setColaborador] = useState( props.colaborador );
@@ -10,7 +11,20 @@ const DisplayColaborador = (props) => {
     const {colaboradores, setColaboradores, times, setores} = props;
     const {onMensagem, onFecharColaborador} = props;
 
-    const [editando,  setEditando] = useState(false);
+    const [editando,           setEditando]          = useState(false);
+    const [confirmandoApagar,  setConfirmandoApagar] = useState(false);
+
+    const onConfirmarDeletarTudo = function(){
+        setConfirmandoApagar(false);
+    }
+
+    const onRecusarDeletarTudo = function(){
+        setConfirmandoApagar(false);
+    }
+
+    const abrirConfirmacaoDeletarTudo = function(){
+        setConfirmandoApagar(true);
+    }
 
     const onEditar = function(){
         setEditando(true);
@@ -48,47 +62,57 @@ const DisplayColaborador = (props) => {
 
             <div className='display-flex'>
 
-                <div className='cabecalho-colaborador'>
-                    <h1> { colaborador.nome } </h1>
-                    <img src={colaborador.imagem} alt={colaborador.nome}/>
+                {
+                    !confirmandoApagar &&
+                    <div className='cabecalho-colaborador'>
+                        <h1> { colaborador.nome } </h1>
+                        <img src={colaborador.imagem} alt={colaborador.nome}/>
 
-                    <ContainerHorizontal>
+                        <ContainerHorizontal>
 
-                        <Botao tipo="neutro" onClick={onMensagem}>
-                            Mensagem
-                        </Botao>
-
-                        <Botao tipo="neutro" onClick={onMensagem}>
-                            Ligação
-                        </Botao>
-
-                    </ContainerHorizontal>
-
-                </div>
-
-                <div className='texto-apresentacao'>
-                    <h2> Sobre: </h2>
-                    <textarea value={colaborador.descricao}></textarea>
-
-                    <ContainerHorizontal>
-
-                        <Botao tipo="cancelar" onClick={onFecharDisplay}>
-                            Fechar Janela
-                        </Botao>
-
-                        {
-                            editando == false ? 
-                            <Botao tipo="neutro" onClick={onEditar}>
-                                Editar
-                            </Botao> : 
-                            
-                            <Botao tipo="neutro" onClick={onPararEditar}>
-                                Cancelar
+                            <Botao tipo="neutro" onClick={onMensagem}>
+                            💬 Mensagem
                             </Botao>
-                        }
 
-                    </ContainerHorizontal>
-                </div>
+                            <Botao tipo="neutro" onClick={onMensagem}>
+                            📞 Ligação
+                            </Botao>
+
+                        </ContainerHorizontal>
+
+                    </div>
+                }
+
+                {
+                !confirmandoApagar &&
+                    <div className='texto-apresentacao'>
+                        <h2> Sobre: </h2>
+                        <textarea value={colaborador.descricao}></textarea>
+
+                        <ContainerHorizontal>
+
+                            <Botao tipo="cancelar" onClick={onFecharDisplay}>
+                                ❌ Fechar
+                            </Botao>
+
+                            <Botao tipo="perigo" onClick={abrirConfirmacaoDeletarTudo}>
+                                🗑️ Apagar
+                            </Botao>
+
+                            {
+                                editando == false ? 
+                                <Botao tipo="neutro" onClick={onEditar}>
+                                    ✏️ Editar
+                                </Botao> : 
+                                
+                                <Botao tipo="neutro" onClick={onPararEditar}>
+                                    ❌ Cancelar
+                                </Botao>
+                            }
+
+                        </ContainerHorizontal>
+                    </div>
+                }
 
                 {
                     editando ? 
@@ -103,7 +127,14 @@ const DisplayColaborador = (props) => {
                     : ''
                 }
 
+                {
+                    confirmandoApagar && <AlertaConfirmacao onConfirmar={onConfirmarDeletarTudo}
+                                                            onRecusar={onRecusarDeletarTudo}
+                                        />        
+                }
+
             </div>
+
 
         </div>
              

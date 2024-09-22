@@ -8,7 +8,9 @@ const Botao = (props) => {
         <button className={classes}
                 onClick={props.onClick}
         >
-            {props.children}
+            <text className='texto'>
+                {props.children}
+            </text>
         </button>)
 
 }

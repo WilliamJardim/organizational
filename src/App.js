@@ -4,6 +4,7 @@ import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
 import Botao from './componentes/Botao';
 import BarraEdicao from './componentes/BarraEdicao';
+import AlertaConfirmacao from './componentes/AlertaConfirmacao';
 
 function App() {
 
@@ -69,11 +70,12 @@ function App() {
       cargo: 'Programador',
       time: 'Programadores',
       imagem: 'https://github.com/WilliamJardim.png',
-      idade: 18
+      idade: 20
     }
   ]);
 
   const [cadatrando,              setCadastrando]              = useState(false);
+  const [confirmandoApagar,       setConfirmandoApagar]        = useState(false);
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
     setColaboradores([...colaboradores, colaborador]);
@@ -92,19 +94,41 @@ function App() {
     setColaboradores([]);
   }
 
+  const onConfirmarDeletarTudo = function(){
+    onApagarTodosColaboradores();
+    setConfirmandoApagar(false);
+    onCancelarEdicao();
+  }
+
+  const onRecusarDeletarTudo = function(){
+    setConfirmandoApagar(false);
+    onCancelarEdicao();
+  }
+
+  const abrirConfirmacaoDeletarTudo = function(){
+    setConfirmandoApagar(true);
+    onCancelarEdicao();
+  }
+
   return (
     <div className="App">
       <Banner />
 
       <BarraEdicao>
           <Botao tipo="neutro" onClick={onNovoClick}>
-              Novo Colaborador
+             ✏️ Novo Colaborador
           </Botao>
 
-          <Botao tipo="perigo" onClick={onApagarTodosColaboradores}>
-              Apagar Tudo
+          <Botao tipo="perigo" onClick={abrirConfirmacaoDeletarTudo}>
+             🗑️ Apagar Tudo
           </Botao>
       </BarraEdicao>
+
+      {
+        confirmandoApagar && <AlertaConfirmacao onConfirmar={onConfirmarDeletarTudo}
+                                                onRecusar={onRecusarDeletarTudo}
+                             />        
+      }
 
       {
         //Se estiver cadastrando um novo

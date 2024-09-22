@@ -1,0 +1,36 @@
+.alerta-confirmacao{
+    width: 100%;
+    justify-content: center;
+    margin: 80px 0;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(0,0,0,0);
+}
+
+.alerta-confirmacao header{
+    margin: 0px 0px 0px 0px;
+    margin-left: -7.2%;
+    margin-top: -22px;
+    width: 113.7% !important; 
+    background-color: rgba(255, 202, 137, 0.555);
+    border: solid 0.5px whitesmoke;
+    border-radius: 20px;
+}
+
+.alerta-confirmacao .botao{
+    width: 180px;
+    height: 90px;
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.alerta-confirmacao div{
+    padding: 28px;
+    background-color: #F2F2F2;
+    border: solid 0.1px black;
+    border-radius: 22px;
+}
+
+.alerta-confirmacao div h2{
+    text-align: center;
+}

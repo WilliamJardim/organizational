@@ -11,6 +11,12 @@
     font-weight: bold;
     box-shadow: 10px 10px 10px black;
     text-decoration:none;
+    text-align: center;
+}
+
+.botao .texto{
+    justify-content: center;
+    text-align: center;
 }
 
 .botao:hover {
